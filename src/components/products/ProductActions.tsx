@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Product } from '@/types/product';
 import { Button } from '@/components/ui/button';
-import { useCart } from '@/context/CartContext';
+import AddToCartButton from '@/components/cart/AddToCartButton';
 import { cn } from '@/lib/utils';
 
 interface ProductActionsProps {
@@ -15,22 +15,6 @@ export default function ProductActions({ product }: ProductActionsProps) {
   const [selectedVariant, setSelectedVariant] = useState<string | null>(
     product.variants?.[0]?.id || null
   );
-  const { addToCart } = useCart();
-
-  const handleAddToCart = () => {
-    const variant = product.variants?.find(v => v.id === selectedVariant);
-    addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.salePrice || product.price,
-      quantity,
-      image: product.images[0],
-      attributes: variant ? {
-        size: variant.size,
-        color: variant.color
-      } : undefined
-    });
-  };
 
   return (
     <div className="space-y-4">
@@ -57,33 +41,34 @@ export default function ProductActions({ product }: ProductActionsProps) {
       )}
 
       <div className="flex items-center gap-4">
-        <div className="flex items-center border rounded-lg">
-          <button
+        <div className="flex items-center border rounded-md">
+          <Button
+            variant="outline"
+            size="icon"
             onClick={() => setQuantity(Math.max(1, quantity - 1))}
-            className="px-3 py-2 hover:bg-gray-100"
+            disabled={quantity <= 1}
           >
             -
-          </button>
-          <span className="px-3 py-2">{quantity}</span>
-          <button
-            onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
-            className="px-3 py-2 hover:bg-gray-100"
+          </Button>
+          <span className="px-4">{quantity}</span>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => setQuantity(quantity + 1)}
           >
             +
-          </button>
+          </Button>
         </div>
-        <span className="text-sm text-gray-500">
-          {product.stock} in stock
-        </span>
-      </div>
 
-      <Button
-        onClick={handleAddToCart}
-        className="w-full"
-        disabled={product.stock === 0 || (product.variants && !selectedVariant)}
-      >
-        {product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
-      </Button>
+        <AddToCartButton
+          product={product}
+          quantity={quantity}
+          selectedAttributes={selectedVariant ? {
+            size: product.variants?.find(v => v.id === selectedVariant)?.size || '',
+            color: product.variants?.find(v => v.id === selectedVariant)?.color || ''
+          } : undefined}
+        />
+      </div>
     </div>
   );
 } 

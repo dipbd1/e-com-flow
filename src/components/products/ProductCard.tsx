@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Star } from 'lucide-react';
-import { Product } from '@/lib/types';
+import { Product } from '@/types/product';
 
 interface ProductCardProps {
   product: Product;
@@ -37,7 +37,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         )}
       </div>
       <div className="mt-2 space-y-0.5">
-        <h3 className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors line-clamp-1">
+        <h3 className="text-sm font-medium text-primary group-hover:text-tertiary dark:text-gray-300 dark:group-hover:text-gray-100 transition-colors line-clamp-1">
           {product.name}
         </h3>
         <div className="flex items-center">

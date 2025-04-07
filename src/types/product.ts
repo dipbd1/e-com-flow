@@ -2,29 +2,26 @@ export interface ProductVariant {
   id: string;
   size: string;
   color: string;
-  stock: number;
 }
 
 export interface Product {
   id: string;
   name: string;
   slug: string;
-  categoryId: string;
-  price: number;
-  salePrice: number | null;
   description: string;
-  features: string[];
-  specifications: {
-    [key: string]: string;
-  };
-  variants?: ProductVariant[];
+  price: number;
+  salePrice?: number;
+  images: string[];
+  categoryId: string;
   rating: number;
   reviewCount: number;
-  stock: number;
-  images: string[];
-  featured: boolean;
-  newArrival: boolean;
-  onSale: boolean;
+  inStock: boolean;
+  featured?: boolean;
+  newArrival?: boolean;
+  onSale?: boolean;
+  createdAt: string;
+  updatedAt: string;
+  variants?: ProductVariant[];
 }
 
 export interface Category {
@@ -36,6 +33,6 @@ export interface Category {
 }
 
 export interface Data {
-  categories: Category[];
   products: Product[];
+  categories: Category[];
 } 

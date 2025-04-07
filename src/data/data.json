@@ -17,7 +17,7 @@
     {
       "id": "home",
       "name": "Home & Living",
-      "slug": "home-living",
+      "slug": "home",
       "description": "Modern furniture and home accessories",
       "image": "/images/categories/home.jpg"
     },
@@ -31,7 +31,7 @@
     {
       "id": "beauty",
       "name": "Beauty & Health",
-      "slug": "beauty-health",
+      "slug": "beauty",
       "description": "Premium beauty and personal care products",
       "image": "/images/categories/beauty.jpg"
     }
@@ -268,6 +268,185 @@
       "featured": true,
       "newArrival": true,
       "onSale": false
+    },
+    {
+      "id": "p7",
+      "name": "4K Ultra HD Smart TV",
+      "slug": "4k-ultra-hd-smart-tv",
+      "categoryId": "electronics",
+      "price": 899.99,
+      "salePrice": 799.99,
+      "description": "Experience stunning 4K resolution with HDR support. Built-in smart features and voice control.",
+      "features": [
+        "55-inch 4K UHD display",
+        "HDR10+ support",
+        "Smart TV platform",
+        "Voice control",
+        "Multiple HDMI ports"
+      ],
+      "specifications": {
+        "Brand": "TechVision",
+        "Model": "TV-55UHD",
+        "Screen Size": "55 inches",
+        "Resolution": "3840 x 2160",
+        "Refresh Rate": "120Hz"
+      },
+      "rating": 4.8,
+      "reviewCount": 156,
+      "stock": 15,
+      "images": [
+        "/images/products/tv-1.jpg",
+        "/images/products/"
+      ],
+      "featured": true,
+      "newArrival": false,
+      "onSale": true
+    },
+    {
+      "id": "p8",
+      "name": "Women's Summer Dress",
+      "slug": "womens-summer-dress",
+      "categoryId": "clothing",
+      "price": 59.99,
+      "salePrice": 49.99,
+      "description": "Light and airy summer dress perfect for warm days. Made from breathable cotton blend.",
+      "features": [
+        "Cotton blend fabric",
+        "A-line silhouette",
+        "Adjustable straps",
+        "Machine washable"
+      ],
+      "specifications": {
+        "Brand": "SummerStyle",
+        "Material": "Cotton Blend",
+        "Care": "Machine wash cold",
+        "Origin": "Imported"
+      },
+      "variants": [
+        {
+          "id": "p8-s-blue",
+          "size": "S",
+          "color": "Blue",
+          "stock": 8
+        },
+        {
+          "id": "p8-m-blue",
+          "size": "M",
+          "color": "Blue",
+          "stock": 12
+        },
+        {
+          "id": "p8-l-blue",
+          "size": "L",
+          "color": "Blue",
+          "stock": 10
+        }
+      ],
+      "rating": 4.6,
+      "reviewCount": 89,
+      "stock": 30,
+      "images": [
+        "/images/products/summer-dress-1.jpg",
+        "/images/products/summer-dress-2.jpg"
+      ],
+      "featured": true,
+      "newArrival": true,
+      "onSale": true
+    },
+    {
+      "id": "p9",
+      "name": "Modern Coffee Table",
+      "slug": "modern-coffee-table",
+      "categoryId": "home",
+      "price": 249.99,
+      "salePrice": 199.99,
+      "description": "Sleek and modern coffee table with tempered glass top and metal frame. Perfect for contemporary living spaces.",
+      "features": [
+        "Tempered glass top",
+        "Metal frame",
+        "Modern design",
+        "Easy assembly"
+      ],
+      "specifications": {
+        "Brand": "HomeStyle",
+        "Dimensions": "48 x 24 x 18 inches",
+        "Material": "Glass, Metal",
+        "Weight": "35 lbs",
+        "Assembly": "Required"
+      },
+      "rating": 4.7,
+      "reviewCount": 67,
+      "stock": 12,
+      "images": [
+        "/images/products/coffee-table-1.jpg",
+        "/images/products/coffee-table-2.jpg"
+      ],
+      "featured": true,
+      "newArrival": false,
+      "onSale": true
+    },
+    {
+      "id": "p10",
+      "name": "The Science of Happiness",
+      "slug": "science-of-happiness",
+      "categoryId": "books",
+      "price": 29.99,
+      "salePrice": null,
+      "description": "A groundbreaking exploration of the psychology behind happiness and well-being.",
+      "features": [
+        "Hardcover edition",
+        "350 pages",
+        "Published 2023",
+        "Includes research studies",
+        "Practical exercises"
+      ],
+      "specifications": {
+        "Author": "Dr. Emily Johnson",
+        "Publisher": "Mindful Press",
+        "Language": "English",
+        "ISBN": "978-3-16-148411-0",
+        "Dimensions": "6 x 9 inches"
+      },
+      "rating": 4.9,
+      "reviewCount": 112,
+      "stock": 45,
+      "images": [
+        "/images/products/book-happiness.jpg"
+      ],
+      "featured": true,
+      "newArrival": true,
+      "onSale": false
+    },
+    {
+      "id": "p11",
+      "name": "Anti-Aging Night Cream",
+      "slug": "anti-aging-night-cream",
+      "categoryId": "beauty",
+      "price": 69.99,
+      "salePrice": 59.99,
+      "description": "Advanced night cream with retinol and peptides. Reduces fine lines and improves skin texture while you sleep.",
+      "features": [
+        "With Retinol and Peptides",
+        "Paraben-free",
+        "Not tested on animals",
+        "Suitable for all skin types",
+        "50ml jar"
+      ],
+      "specifications": {
+        "Brand": "PureSkin",
+        "Ingredients": "Aqua, Retinol, Peptides, Glycerin",
+        "Use": "Apply before bedtime",
+        "Shelf Life": "12 months after opening"
+      },
+      "rating": 4.8,
+      "reviewCount": 234,
+      "stock": 28,
+      "images": [
+        "/images/products/night-cream.jpg"
+      ],
+      "featured": true,
+      "newArrival": false,
+      "onSale": true
     }
   ],
   "featured": {

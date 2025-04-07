@@ -1,21 +1,27 @@
 "use client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import ThemeToggle from '@/components/ui/theme-toggle';
-// import { useCart } from '@/context/CartContext';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
+import { CartBadgeSkeleton } from '@/components/cart/CartBadgeSkeleton';
 
 const Header = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
-  // const { cartItems } = useCart();
+  const { items = [] } = useSelector((state: RootState) => state.cart);
   
-  // For demo purposes
-  const cartItemsCount = 0; // Replace with cartItems.length once cart context is implemented
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  const cartItemsCount = items.reduce((sum, item) => sum + item.quantity, 0);
   
   const navItems = [
     { name: 'Home', href: '/' },
@@ -26,7 +32,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center">
       <div className="container px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -91,15 +97,26 @@ const Header = () => {
               </Button>
             </Link>
             
+            {/* Login */}
+            <Link
+              href="/login"
+              className="flex items-center space-x-1 text-gray-600 hover:text-gray-900"
+            >
+              <LogIn size={20} />
+              <span>Login</span>
+            </Link>
+            
             {/* Cart */}
             <Link href="/cart">
               <Button variant="ghost" size="icon" className="h-9 w-9 relative">
                 <ShoppingCart size={18} />
-                {cartItemsCount > 0 && (
+                {isLoading ? (
+                  <CartBadgeSkeleton />
+                ) : cartItemsCount > 0 ? (
                   <span className="absolute -top-1 -right-1 h-4 w-4 text-[10px] flex items-center justify-center rounded-full bg-primary text-primary-foreground">
-                    {cartItemsCount}
+                    {cartItemsCount > 99 ? '99+' : cartItemsCount}
                   </span>
-                )}
+                ) : null}
               </Button>
             </Link>
             

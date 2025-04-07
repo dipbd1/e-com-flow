@@ -12,6 +12,7 @@ export interface Product {
   newArrival?: boolean;
   onSale?: boolean;
   attributes?: Record<string, string[]>;
+  createdAt: string;
 }
 
 export interface CartItem {

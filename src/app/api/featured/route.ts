@@ -1,6 +1,14 @@
 import { NextResponse } from 'next/server';
-import data from '@/data/data.json';
+import { getHeroSlides, getPromotions } from '@/lib/data';
 
 export async function GET() {
-  return NextResponse.json(data.featured);
+  const [heroSlides, promotions] = await Promise.all([
+    getHeroSlides(),
+    getPromotions()
+  ]);
+
+  return NextResponse.json({
+    heroSlider: heroSlides,
+    promotions: promotions
+  });
 }

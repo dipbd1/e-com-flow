@@ -1,14 +1,12 @@
 import { notFound } from 'next/navigation';
-import { getCategoryBySlug, getProductsByCategory } from '@/lib/data';
+import { Product, Category } from '@/types/product';
 import ProductGrid from '@/components/products/ProductGrid';
 import CategoryHeader from '@/components/category/CategoryHeader';
 import CategoryFilters from '@/components/category/CategoryFilters';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 
 interface CategoryPageProps {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
   searchParams: {
     sort?: string;
     minPrice?: string;
@@ -17,14 +15,33 @@ interface CategoryPageProps {
   };
 }
 
+async function getCategory(slug: string) {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  const res = await fetch(`${baseUrl}/api/categories?slug=${slug}`, { cache: 'no-store' });
+  if (!res.ok) {
+    throw new Error('Failed to fetch category');
+  }
+  return res.json();
+}
+
+async function getCategoryProducts(categorySlug: string) {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  const res = await fetch(`${baseUrl}/api/products?category=${categorySlug}`, { cache: 'no-store' });
+  if (!res.ok) {
+    throw new Error('Failed to fetch category products');
+  }
+  return res.json();
+}
+
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
-  const category = await getCategoryBySlug(params.slug);
+  const { slug } = await params;
+  const category = await getCategory(slug);
   
   if (!category) {
     notFound();
   }
 
-  const products = await getProductsByCategory(category.id);
+  const products = await getCategoryProducts(category.slug);
   
   // Apply filters based on searchParams
   let filteredProducts = [...products];
@@ -32,17 +49,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Sort products
   if (searchParams.sort) {
     switch (searchParams.sort) {
-      case 'price-asc':
+      case 'price-low':
         filteredProducts.sort((a, b) => (a.salePrice || a.price) - (b.salePrice || b.price));
         break;
-      case 'price-desc':
+      case 'price-high':
         filteredProducts.sort((a, b) => (b.salePrice || b.price) - (a.salePrice || a.price));
         break;
       case 'rating':
         filteredProducts.sort((a, b) => b.rating - a.rating);
         break;
       case 'newest':
-        filteredProducts.sort((a, b) => (b.newArrival ? 1 : 0) - (a.newArrival ? 1 : 0));
+        filteredProducts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
         break;
     }
   }
@@ -68,46 +85,33 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const startIndex = (page - 1) * itemsPerPage;
   const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
 
-  // Calculate category statistics
-  const totalProducts = filteredProducts.length;
-  const averageRating = filteredProducts.reduce((acc, product) => acc + product.rating, 0) / totalProducts;
-  const onSaleCount = filteredProducts.filter(product => product.onSale).length;
-  const newArrivalsCount = filteredProducts.filter(product => product.newArrival).length;
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Categories', href: '/categories' },
+    { label: category.name, href: `/category/${category.slug}` },
+  ];
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Categories', href: '/categories' },
-          { label: category.name, href: `/category/${category.slug}` },
-        ]}
-      />
-
+      <Breadcrumb items={breadcrumbItems} />
+      
       <CategoryHeader category={category} />
       
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        <div className="lg:col-span-1">
-          <CategoryFilters 
+      <div className="flex flex-col md:flex-row gap-8">
+        <div className="w-full md:w-1/4">
+          <CategoryFilters
             category={category}
-            totalProducts={totalProducts}
-            currentSort={searchParams.sort}
-            minPrice={searchParams.minPrice}
-            maxPrice={searchParams.maxPrice}
+            totalProducts={filteredProducts.length}
+            currentSort={searchParams.sort || 'newest'}
+            priceRange={{
+              min: searchParams.minPrice || '',
+              max: searchParams.maxPrice || '',
+            }}
           />
         </div>
         
-        <div className="lg:col-span-3">
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-              <span>Total Products: {totalProducts}</span>
-              {onSaleCount > 0 && <span>On Sale: {onSaleCount}</span>}
-              {newArrivalsCount > 0 && <span>New Arrivals: {newArrivalsCount}</span>}
-              <span>Average Rating: {averageRating.toFixed(1)}</span>
-            </div>
-          </div>
-
-          <ProductGrid 
+        <div className="w-full md:w-3/4">
+          <ProductGrid
             products={paginatedProducts}
             currentPage={page}
             totalPages={totalPages}
