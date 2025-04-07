@@ -1,0 +1,402 @@
+{
+  "categories": [
+    {
+      "id": "electronics",
+      "name": "Electronics",
+      "slug": "electronics",
+      "description": "Latest technology products and gadgets",
+      "image": "/images/categories/electronics.jpg"
+    },
+    {
+      "id": "clothing",
+      "name": "Clothing",
+      "slug": "clothing",
+      "description": "Fashion apparel for all styles",
+      "image": "/images/categories/clothing.jpg"
+    },
+    {
+      "id": "home",
+      "name": "Home & Living",
+      "slug": "home-living",
+      "description": "Modern furniture and home accessories",
+      "image": "/images/categories/home.jpg"
+    },
+    {
+      "id": "books",
+      "name": "Books",
+      "slug": "books",
+      "description": "Best-selling books in various genres",
+      "image": "/images/categories/books.jpg"
+    },
+    {
+      "id": "beauty",
+      "name": "Beauty & Health",
+      "slug": "beauty-health",
+      "description": "Premium beauty and personal care products",
+      "image": "/images/categories/beauty.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": "p1",
+      "name": "Premium Wireless Headphones",
+      "slug": "premium-wireless-headphones",
+      "categoryId": "electronics",
+      "price": 249.99,
+      "salePrice": 199.99,
+      "description": "Experience crystal-clear sound with our premium noise-cancelling wireless headphones. Perfect for music lovers and professionals alike.",
+      "features": [
+        "Active noise cancellation",
+        "30-hour battery life",
+        "Bluetooth 5.0",
+        "Built-in microphone",
+        "Touch controls"
+      ],
+      "specifications": {
+        "Brand": "SoundMax",
+        "Model": "SM-H100",
+        "Color": "Matte Black",
+        "Connectivity": "Wireless",
+        "Weight": "250g"
+      },
+      "rating": 4.7,
+      "reviewCount": 128,
+      "stock": 25,
+      "images": [
+        "/images/products/headphones-1.jpg",
+        "/images/products/headphones-2.jpg",
+        "/images/products/headphones-3.jpg"
+      ],
+      "featured": true,
+      "newArrival": false,
+      "onSale": true
+    },
+    {
+      "id": "p2",
+      "name": "Smart Fitness Watch",
+      "slug": "smart-fitness-watch",
+      "categoryId": "electronics",
+      "price": 199.99,
+      "salePrice": null,
+      "description": "Track your fitness goals with our advanced smart watch. Features heart rate monitoring, sleep tracking, and GPS.",
+      "features": [
+        "Heart rate monitor",
+        "GPS tracking",
+        "Water resistant (50m)",
+        "Sleep analysis",
+        "7-day battery life"
+      ],
+      "specifications": {
+        "Brand": "FitTech",
+        "Model": "FT-W200",
+        "Color": "Graphite",
+        "Display": "1.4 inch AMOLED",
+        "Weight": "48g"
+      },
+      "rating": 4.5,
+      "reviewCount": 94,
+      "stock": 42,
+      "images": [
+        "/images/products/fitness-watch-1.jpg",
+        "/images/products/fitness-watch-2.jpg"
+      ],
+      "featured": true,
+      "newArrival": true,
+      "onSale": false
+    },
+    {
+      "id": "p3",
+      "name": "Men's Cotton Casual Shirt",
+      "slug": "mens-cotton-casual-shirt",
+      "categoryId": "clothing",
+      "price": 49.99,
+      "salePrice": 39.99,
+      "description": "Classic casual shirt made from 100% organic cotton. Comfortable fit for everyday wear.",
+      "features": [
+        "100% organic cotton",
+        "Button-down collar",
+        "Regular fit",
+        "Machine washable"
+      ],
+      "specifications": {
+        "Brand": "Urban Style",
+        "Material": "100% Cotton",
+        "Care": "Machine wash cold",
+        "Origin": "Imported"
+      },
+      "variants": [
+        {
+          "id": "p3-s-blue",
+          "size": "S",
+          "color": "Blue",
+          "stock": 10
+        },
+        {
+          "id": "p3-m-blue",
+          "size": "M",
+          "color": "Blue",
+          "stock": 15
+        },
+        {
+          "id": "p3-l-blue",
+          "size": "L",
+          "color": "Blue",
+          "stock": 12
+        },
+        {
+          "id": "p3-s-white",
+          "size": "S",
+          "color": "White",
+          "stock": 8
+        },
+        {
+          "id": "p3-m-white",
+          "size": "M",
+          "color": "White",
+          "stock": 13
+        },
+        {
+          "id": "p3-l-white",
+          "size": "L",
+          "color": "White",
+          "stock": 7
+        }
+      ],
+      "rating": 4.3,
+      "reviewCount": 67,
+      "stock": 65,
+      "images": [
+        "/images/products/casual-shirt-blue.jpg",
+        "/images/products/casual-shirt-white.jpg"
+      ],
+      "featured": false,
+      "newArrival": false,
+      "onSale": true
+    },
+    {
+      "id": "p4",
+      "name": "Minimalist Desk Lamp",
+      "slug": "minimalist-desk-lamp",
+      "categoryId": "home",
+      "price": 79.99,
+      "salePrice": null,
+      "description": "Modern minimalist desk lamp with adjustable brightness levels and color temperature. Perfect for your home office.",
+      "features": [
+        "Touch controls",
+        "5 brightness levels",
+        "3 color temperature modes",
+        "USB charging port",
+        "Auto-off timer"
+      ],
+      "specifications": {
+        "Brand": "HomeEssentials",
+        "Dimensions": "15 x 6 x 18 inches",
+        "Power": "12W LED",
+        "Material": "Aluminum and silicone",
+        "Warranty": "2 years"
+      },
+      "rating": 4.8,
+      "reviewCount": 43,
+      "stock": 18,
+      "images": [
+        "/images/products/desk-lamp-1.jpg",
+        "/images/products/desk-lamp-2.jpg"
+      ],
+      "featured": true,
+      "newArrival": true,
+      "onSale": false
+    },
+    {
+      "id": "p5",
+      "name": "The Art of Strategy",
+      "slug": "art-of-strategy",
+      "categoryId": "books",
+      "price": 24.99,
+      "salePrice": 19.99,
+      "description": "A comprehensive guide to strategic thinking in business and life. Written by renowned business professor and game theorist.",
+      "features": [
+        "Hardcover edition",
+        "300 pages",
+        "Published 2023",
+        "Includes practical exercises",
+        "Case studies from leading companies"
+      ],
+      "specifications": {
+        "Author": "Dr. Robert Chen",
+        "Publisher": "Business Minds Press",
+        "Language": "English",
+        "ISBN": "978-3-16-148410-0",
+        "Dimensions": "6 x 9 inches"
+      },
+      "rating": 4.6,
+      "reviewCount": 78,
+      "stock": 32,
+      "images": [
+        "/images/products/book-strategy.jpg"
+      ],
+      "featured": false,
+      "newArrival": false,
+      "onSale": true
+    },
+    {
+      "id": "p6",
+      "name": "Premium Facial Serum",
+      "slug": "premium-facial-serum",
+      "categoryId": "beauty",
+      "price": 59.99,
+      "salePrice": null,
+      "description": "Advanced anti-aging serum with vitamin C and hyaluronic acid. Reduces fine lines and improves skin texture.",
+      "features": [
+        "With Vitamin C and Hyaluronic Acid",
+        "Paraben-free",
+        "Not tested on animals",
+        "Suitable for all skin types",
+        "30ml bottle"
+      ],
+      "specifications": {
+        "Brand": "PureSkin",
+        "Ingredients": "Aqua, Ascorbic Acid, Sodium Hyaluronate, Glycerin",
+        "Use": "Apply morning and evening",
+        "Shelf Life": "12 months after opening"
+      },
+      "rating": 4.9,
+      "reviewCount": 56,
+      "stock": 22,
+      "images": [
+        "/images/products/facial-serum.jpg"
+      ],
+      "featured": true,
+      "newArrival": true,
+      "onSale": false
+    }
+  ],
+  "featured": {
+    "heroSlider": [
+      {
+        "id": "slide1",
+        "title": "New Summer Collection",
+        "subtitle": "Discover fresh styles for the season",
+        "image": "/images/banners/summer-collection.jpg",
+        "ctaText": "Shop Now",
+        "ctaLink": "/category/clothing"
+      },
+      {
+        "id": "slide2",
+        "title": "Tech Essentials",
+        "subtitle": "The latest gadgets for modern living",
+        "image": "/images/banners/tech-essentials.jpg",
+        "ctaText": "Explore",
+        "ctaLink": "/category/electronics"
+      },
+      {
+        "id": "slide3",
+        "title": "Home Makeover Sale",
+        "subtitle": "Up to 40% off selected home items",
+        "image": "/images/banners/home-makeover.jpg",
+        "ctaText": "View Offers",
+        "ctaLink": "/deals"
+      }
+    ],
+    "promotions": [
+      {
+        "id": "promo1",
+        "title": "Free Shipping",
+        "description": "On all orders over $50",
+        "icon": "truck"
+      },
+      {
+        "id": "promo2",
+        "title": "Easy Returns",
+        "description": "30-day money back guarantee",
+        "icon": "refresh-ccw"
+      },
+      {
+        "id": "promo3",
+        "title": "Secure Payment",
+        "description": "Protected by industry standards",
+        "icon": "shield"
+      },
+      {
+        "id": "promo4",
+        "title": "24/7 Support",
+        "description": "Contact us anytime",
+        "icon": "headphones"
+      }
+    ]
+  },
+  "users": [
+    {
+      "id": "u1",
+      "email": "john.doe@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "NY",
+        "zipCode": "10001",
+        "country": "USA"
+      },
+      "phone": "+1 555-123-4567"
+    }
+  ],
+  "orders": [
+    {
+      "id": "o1",
+      "userId": "u1",
+      "items": [
+        {
+          "productId": "p1",
+          "name": "Premium Wireless Headphones",
+          "price": 199.99,
+          "quantity": 1
+        },
+        {
+          "productId": "p4",
+          "name": "Minimalist Desk Lamp",
+          "price": 79.99,
+          "quantity": 2
+        }
+      ],
+      "status": "delivered",
+      "total": 359.97,
+      "shipping": 0,
+      "tax": 28.80,
+      "grandTotal": 388.77,
+      "paymentMethod": "credit_card",
+      "shippingAddress": {
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "NY",
+        "zipCode": "10001",
+        "country": "USA"
+      },
+      "createdAt": "2025-03-15T10:30:00Z",
+      "updatedAt": "2025-03-18T14:20:00Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "productId": "p1",
+      "userId": "u1",
+      "userName": "John D.",
+      "rating": 5,
+      "title": "Excellent sound quality",
+      "comment": "These headphones exceeded my expectations. The noise cancellation is superb and the sound quality is crystal clear. Battery life is as advertised. Highly recommend!",
+      "createdAt": "2025-03-20T15:30:00Z",
+      "verified": true
+    },
+    {
+      "id": "r2",
+      "productId": "p1",
+      "userId": "u2",
+      "userName": "Sarah M.",
+      "rating": 4,
+      "title": "Great headphones, but a bit heavy",
+      "comment": "The sound quality is amazing and I love the noise cancellation. My only complaint is that they get a bit uncomfortable during long listening sessions. Otherwise, excellent product.",
+      "createdAt": "2025-03-18T09:45:00Z",
+      "verified": true
+    }
+  ]
+}
