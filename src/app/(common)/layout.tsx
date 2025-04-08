@@ -9,8 +9,8 @@ export default function CommonLayout({
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow px-4 sm:px-6 lg:px-8 py-8">
-        <div className="max-w-7xl mx-auto">
+      <main className="flex-grow py-8 px-8 mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-10 2xl:mx-72">
+        <div className="">
           {children}
         </div>
       </main>

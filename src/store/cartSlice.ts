@@ -139,7 +139,6 @@ const cartSlice = createSlice({
   },
 });
 
-console.log(loadCartFromStorage());
 
 export const { addToCart, removeFromCart, updateQuantity, clearCart } = cartSlice.actions;
 export default cartSlice.reducer; 

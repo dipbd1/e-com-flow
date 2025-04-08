@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { SliderItem } from '@/types';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
@@ -17,27 +17,27 @@ export function ClientSideSlider({ slides }: ClientSideSliderProps) {
 
   // Initialize carousel with autoplay plugin
   const [emblaRef,] = useEmblaCarousel(
-    { loop: true, startIndex: 0 }, 
+    { loop: true, startIndex: 0 },
     [Autoplay({ delay: 6000, stopOnInteraction: false })]
   );
-  
+
   // Only show after first render to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
-    
+
     // Hide server-rendered slide when client slider is ready
-    const serverSlide = document.querySelector('.server-rendered-slide');
+    const serverSlide = document.querySelector('.server-rendered-slide') as HTMLElement;
     if (serverSlide) {
-      serverSlide.classList.add('hidden');
+      serverSlide.style.display = 'none';
     }
   }, []);
-  
+
   if (!mounted) {
     return null;
   }
 
   return (
-    <div className="client-side-slider relative aspect-[21/9] overflow-hidden rounded-lg">
+    <div className="relative aspect-[21/13] sm:aspect-[21/9] overflow-hidden rounded-lg w-full">
       <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">
           {slides.map((slide, index) => (
