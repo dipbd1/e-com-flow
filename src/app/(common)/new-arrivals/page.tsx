@@ -3,17 +3,11 @@
 import { useState, useEffect } from 'react';
 import ProductCard from '@/components/products/ProductCard';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Search, Filter, ChevronDown } from 'lucide-react';
+import { Filter, ChevronDown } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import { Product } from '@/types/product';
 import { SearchBar } from '@/components/ui/SearchBar';
 
-const filters = {
-  categories: ['Electronics', 'Fashion', 'Home & Living'],
-  priceRanges: ['Under $50', '$50 - $100', '$100 - $200', 'Over $200'],
-  sortOptions: ['Newest First', 'Price: Low to High', 'Price: High to Low', 'Most Popular']
-};
 
 async function getNewArrivals() {
   const res = await fetch('/api/products?new=true', { 
@@ -87,9 +81,9 @@ async function getFilteredProducts(
 
 export default function NewArrivalsPage() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedPriceRange, setSelectedPriceRange] = useState<string | null>(null);
-  const [sortBy, setSortBy] = useState('Newest First');
+  const [selectedCategory, ] = useState<string | null>(null);
+  const [selectedPriceRange, ] = useState<string | null>(null);
+  const [sortBy, ] = useState('Newest First');
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -198,7 +192,7 @@ export default function NewArrivalsPage() {
             <div className="text-center py-12">
               <h3 className="text-lg font-medium mb-2">No products found</h3>
               <p className="text-muted-foreground">
-                Try adjusting your search or filter to find what you're looking for.
+                Try adjusting your search or filter to find what you&apos;re looking for.
               </p>
             </div>
           )}

@@ -55,14 +55,14 @@ export default function AboutPage() {
               <Users className="w-12 h-12 text-primary dark:text-primary-dark mb-4" />
               <h3 className="text-xl font-semibold mb-2">Customer Focus</h3>
               <p className="text-text-secondary dark:text-text-dark-secondary">
-                Your satisfaction is our priority. We're committed to providing exceptional customer service.
+                Your satisfaction is our priority. We&apos;re committed to providing exceptional customer service.
               </p>
             </div>
             <div className="p-6 rounded-lg bg-background-light dark:bg-background-dark">
               <Heart className="w-12 h-12 text-primary dark:text-primary-dark mb-4" />
               <h3 className="text-xl font-semibold mb-2">Sustainability</h3>
               <p className="text-text-secondary dark:text-text-dark-secondary">
-                We're dedicated to reducing our environmental impact and promoting sustainable practices.
+                We&apos;re dedicated to reducing our environmental impact and promoting sustainable practices.
               </p>
             </div>
           </div>

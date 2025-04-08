@@ -17,8 +17,10 @@ export interface Product {
   reviewCount: number;
   inStock: boolean;
   featured?: boolean;
-  newArrival?: boolean;
-  onSale?: boolean;
+  newArrival: boolean;
+  onSale: boolean;
+  features: string[];
+  specifications: Record<string, string>;
   createdAt: string;
   updatedAt: string;
   variants?: ProductVariant[];
@@ -30,6 +32,9 @@ export interface Category {
   slug: string;
   description: string;
   image: string;
+  parentId: string | null;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Data {

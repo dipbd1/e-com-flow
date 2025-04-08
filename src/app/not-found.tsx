@@ -43,7 +43,7 @@ const NotFoundPage = () => {
               </h1>
               
               <p className="text-slate-300 mb-8">
-                The page you're looking for doesn't exist or has been moved.
+                The page yous&apos;re looking for doesn&apos;t exist or has been moved.
                 <br />
                 <span className="text-blue-400">Return to the mainframe.</span>
               </p>

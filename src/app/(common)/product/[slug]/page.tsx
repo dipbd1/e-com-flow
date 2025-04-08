@@ -2,10 +2,10 @@ import { notFound } from 'next/navigation';
 import ProductDetail from '@/components/products/ProductDetail';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 
-interface ProductPageProps {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
+
+type tParams = Promise<{
+  slug: string;
+}>;
 
 async function getProduct(slug: string) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -25,9 +25,9 @@ async function getCategoryBySlug(slug: string) {
   return res.json();
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = await params;
-  const product = await getProduct(slug);
+export default async function ProductPage(props:{ params : tParams }) {
+  const resolvedParams = await props.params;
+  const product = await getProduct(resolvedParams.slug);
 
   if (!product) {
     return <div>Product not found</div>;

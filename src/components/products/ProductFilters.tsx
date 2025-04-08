@@ -11,7 +11,7 @@ interface ProductFiltersProps {
   };
 }
 
-export default function ProductFilters({ totalProducts, currentCategory, priceRange }: ProductFiltersProps) {
+export default function ProductFilters({ }: ProductFiltersProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const category = searchParams.get('category');

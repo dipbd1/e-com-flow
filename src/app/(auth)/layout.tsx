@@ -2,8 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ReduxProvider } from "@/components/providers/ReduxProvider";
 import { Toaster } from 'sonner';
-import Header from "@/components/layouts/Header";
-import Footer from "@/components/layouts/Footer";
 import "../globals.css";
 import { ThemeProvider } from '@/components/providers/theme-provider';
 

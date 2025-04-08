@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Star, Heart, ShoppingCart } from 'lucide-react';
+import { Star, Heart } from 'lucide-react';
 import { Product } from '@/types/product';
 import { useState } from 'react';
 
@@ -11,7 +11,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [, setIsHovered] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
 
   return (

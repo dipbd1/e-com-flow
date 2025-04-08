@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
 import { Check, ShoppingCart } from 'lucide-react';
 import { toast } from 'sonner';
+import { useDispatch } from 'react-redux';
+import { addItem } from '@/store/cart/cartSlice';
 
 interface AddToCartButtonProps {
   product: {
@@ -25,25 +26,24 @@ export function AddToCartButton({
   size = 'default',
   className = '',
 }: AddToCartButtonProps) {
-  const { addToCart } = useCart();
+  const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
 
   const handleAddToCart = () => {
-    addToCart({
+    dispatch(addItem({
       id: product.id,
       name: product.name,
       price: product.price,
       image: product.image,
       quantity: 1,
       attributes: product.attributes,
-    });
+    }));
 
     setIsAdded(true);
     toast.success('Added to cart!', {
       description: `${product.name} has been added to your cart.`,
     });
 
-    // Reset the added state after 2 seconds
     setTimeout(() => setIsAdded(false), 2000);
   };
 

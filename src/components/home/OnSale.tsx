@@ -1,6 +1,6 @@
 import ProductGrid from '@/components/products/ProductGrid';
 import SectionHeading from '@/components/ui/SectionHeading';
-import { Product } from '@/types';
+import { Product } from '@/types/product';
 
 interface OnSaleProps {
   products: Product[];

@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store';
 import { removeFromCart, updateQuantity } from '@/store/slices/cartSlice';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface CartPreviewProps {
   isOpen: boolean;
@@ -57,9 +58,11 @@ export function CartPreview({ isOpen, onClose }: CartPreviewProps) {
                       {items.map((item) => (
                         <li key={`${item.product.id}-${JSON.stringify(item.selectedAttributes)}`} className="flex py-6">
                           <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border">
-                            <img
+                            <Image
                               src={item.product.images?.[0] || '/placeholder.png'}
                               alt={item.product.name}
+                              width={80}
+                              height={80}
                               className="h-full w-full object-cover"
                             />
                           </div>

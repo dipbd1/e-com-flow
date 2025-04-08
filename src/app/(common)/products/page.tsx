@@ -5,15 +5,14 @@ import Breadcrumb from '@/components/ui/Breadcrumb';
 
 const ITEMS_PER_PAGE = 24;
 
-interface ProductsPageProps {
-  searchParams: {
-    category?: string;
-    sort?: string;
-    minPrice?: string;
-    maxPrice?: string;
-    page?: string;
-  };
-}
+type ProductsPageProps = {
+  params: Promise<{
+    [key: string]: string | string[];
+  }>;
+  searchParams: Promise<{
+    [key: string]: string | string[] | undefined;
+  }>;
+};
 
 async function getProducts() {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -25,8 +24,14 @@ async function getProducts() {
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const { category, sort, minPrice, maxPrice, page } = searchParams;
+  const resolvedSearchParams = await searchParams;
   
+  const category = resolvedSearchParams.category as string | undefined;
+  const sort = resolvedSearchParams.sort as string | undefined;
+  const minPrice = resolvedSearchParams.minPrice as string | undefined;
+  const maxPrice = resolvedSearchParams.maxPrice as string | undefined;
+  const page = resolvedSearchParams.page as string | undefined;
+
   const products = await getProducts();
   
   // Apply filters based on searchParams

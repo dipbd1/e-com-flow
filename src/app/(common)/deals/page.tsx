@@ -2,15 +2,16 @@
 
 import { notFound } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
-import { Product } from '@/types/product';
 import { getOnSaleProducts } from '@/lib/data';
 import ProductGrid from '@/components/products/ProductGrid';
 import DealsSortSelect from '@/components/deals/DealsSortSelect';
+import { Suspense } from 'react';
+import Breadcrumb from '@/components/ui/Breadcrumb';
 
-export default function DealsPage() {
+function DealsContent() {
   const searchParams = useSearchParams();
   const deals = getOnSaleProducts();
-  
+
   if (!deals.length) {
     notFound();
   }
@@ -41,22 +42,32 @@ export default function DealsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold mb-4">Hot Deals</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Don't miss out on these limited-time offers. Shop our best deals and save big on your favorite products.
-        </p>
-      </div>
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Deals", href: "/deals" },
+        ]}
+      />
+      
+      <h1 className="text-3xl font-bold mb-6">Hot Deals</h1>
+      <p className="text-gray-600 mb-8">Check out our best deals and discounts!</p>
 
       <div className="flex justify-end mb-6">
         <DealsSortSelect />
       </div>
-
       <ProductGrid
         products={paginatedDeals}
         currentPage={page}
         totalPages={totalPages}
       />
     </div>
+  );
+}
+
+export default function DealsPage() {
+  return (
+    <Suspense fallback={<div>Loading deals...</div>}>
+      <DealsContent />
+    </Suspense>
   );
 } 

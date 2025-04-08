@@ -160,6 +160,32 @@ A modern, full-featured e-commerce platform built with Next.js, TypeScript, and 
    - Screen reader support
    - Color contrast
 
+## 🐛 Troubleshooting
+
+1. **TypeScript Errors**
+   - Ensure all components are properly typed
+   - Check for missing type definitions
+   - Verify Next.js page props types
+   - Run `yarn tsc --noEmit` to check types
+
+2. **Build Issues**
+   - Clear Next.js cache: `rm -rf .next`
+   - Delete node_modules: `rm -rf node_modules`
+   - Reinstall dependencies: `yarn install`
+   - Check for conflicting dependencies
+
+3. **Development Server**
+   - Ensure port 3000 is available
+   - Check for environment variables
+   - Verify API endpoints are accessible
+   - Monitor console for errors
+
+4. **Styling Issues**
+   - Check Tailwind configuration
+   - Verify PostCSS setup
+   - Ensure proper class names
+   - Check for conflicting styles
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

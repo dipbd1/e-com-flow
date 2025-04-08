@@ -8,6 +8,7 @@ import Breadcrumb from '@/components/ui/Breadcrumb';
 import { SearchBar } from '@/components/ui/SearchBar';
 import { Button } from '@/components/ui/button';
 import { Product } from '@/types/product';
+import { Category } from '@/types';
 
 interface CategoryPageProps {
   params: Promise<{
@@ -51,7 +52,7 @@ async function getCategoryProducts(slug: string, searchQuery?: string) {
 
 export default function CategoryPage({ params }: CategoryPageProps) {
   const resolvedParams = use(params);
-  const [category, setCategory] = useState<any>(null);
+  const [category, setCategory] = useState<Category | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);

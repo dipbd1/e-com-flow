@@ -3,14 +3,15 @@ import data from '@/data/data.json';
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
+    const resolvedParams = await params;
     const { searchParams } = new URL(request.url);
     const searchQuery = searchParams.get('search')?.toLowerCase() || '';
 
     const category = data.categories.find(
-      (category) => category.slug === params.slug
+      (category) => category.slug === resolvedParams.slug
     );
 
     if (!category) {
@@ -32,6 +33,7 @@ export async function GET(
 
     return NextResponse.json(products);
   } catch (error) {
+    console.error('Error fetching products:', error);
     return new NextResponse('Internal Server Error', { status: 500 });
   }
 } 

@@ -18,7 +18,7 @@ export default async function CategoriesPage() {
       <div className="text-center mb-12">
         <h1 className="text-3xl font-bold mb-4">Shop by Category</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Explore our wide range of products organized by category. Find exactly what you're looking for with our easy-to-navigate categories.
+          Explore our wide range of products organized by category. Find exactly what you&apos;re looking for with our easy-to-navigate categories.
         </p>
       </div>
 

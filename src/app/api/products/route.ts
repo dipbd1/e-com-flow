@@ -1,26 +1,25 @@
 import { NextResponse } from 'next/server';
-import { getAllProducts, getNewArrivals, getOnSaleProducts, getProductsByCategory } from '@/lib/data';
+import data from '@/data/data.json';
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const featured = searchParams.get('featured') === 'true';
-  const newArrivals = searchParams.get('new') === 'true';
-  const onSale = searchParams.get('sale') === 'true';
-  const category = searchParams.get('category');
+  try {
+    const { searchParams } = new URL(request.url);
+    const category = searchParams.get('category');
+    const isNew = searchParams.get('new') === 'true';
 
-  let products;
+    let products = [...data.products];
 
-  if (featured) {
-    products = (await getAllProducts()).filter(product => product.featured);
-  } else if (newArrivals) {
-    products = await getNewArrivals();
-  } else if (onSale) {
-    products = await getOnSaleProducts();
-  } else if (category) {
-    products = await getProductsByCategory(category);
-  } else {
-    products = await getAllProducts();
+    if (category) {
+      products = products.filter(product => product.categoryId === category);
+    }
+
+    if (isNew) {
+      products = products.filter(product => product.newArrival);
+    }
+
+    return NextResponse.json(products);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return new NextResponse('Internal Server Error', { status: 500 });
   }
-
-  return NextResponse.json(products);
 }

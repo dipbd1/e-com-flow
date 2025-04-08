@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight} from 'lucide-react';
 import { SliderItem } from '@/types';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
@@ -16,7 +16,7 @@ export function ClientSideSlider({ slides }: ClientSideSliderProps) {
   const [mounted, setMounted] = useState(false);
 
   // Initialize carousel with autoplay plugin
-  const [emblaRef, emblaApi] = useEmblaCarousel(
+  const [emblaRef,] = useEmblaCarousel(
     { loop: true, startIndex: 0 }, 
     [Autoplay({ delay: 6000, stopOnInteraction: false })]
   );
