@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { CartProvider } from "@/context/CartContext";
 import ReduxProvider from "@/components/providers/ReduxProvider";
 import { Toaster } from 'sonner';
 import Header from "@/components/layouts/Header";
@@ -57,7 +56,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ReduxProvider>
-            <CartProvider>
               <div className="flex flex-col min-h-screen">
                 <Header />
                 <main className="flex-grow px-4 md:px-6 lg:px-8 py-6 md:py-8">
@@ -66,7 +64,6 @@ export default function RootLayout({
                 <Footer />
               </div>
               <Toaster position="top-right" />
-            </CartProvider>
           </ReduxProvider>
         </ThemeProvider>
       </body>

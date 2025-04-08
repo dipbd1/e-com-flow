@@ -3,13 +3,21 @@ import { getProductBySlug } from '@/lib/data';
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const product = getProductBySlug(params.slug);
-  
-  if (!product) {
-    return NextResponse.json({ error: 'Product not found' }, { status: 404 });
-  }
+  try {
+    const resolvedParams = await params;
+    const product = getProductBySlug(resolvedParams.slug);
 
-  return NextResponse.json(product);
+    if (!product) {
+      return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+    }
+
+    return NextResponse.json(product);
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    );
+  }
 } 

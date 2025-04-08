@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@config "../../tailwind.config.js";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -42,8 +44,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
-
-/* @media (prefers-color-scheme: dark) {
+/* 
+@media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;

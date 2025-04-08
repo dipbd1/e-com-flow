@@ -71,7 +71,7 @@ export default function AboutPage() {
 
       {/* Values Section */}
       <section className="py-12">
-        <div className="container bg-black/50 dark:bg-blue-950 p-8 rounded-lg">
+        <div className="container bg-gradient-to-r from-amber-200 via-amber-100 to-amber-50 dark:bg-blue-950 p-8 rounded-lg">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Values</h2>
             <p className="max-w-2xl mx-auto text-text-secondary dark:text-text-dark-secondary">
@@ -110,8 +110,8 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 bg-background-light dark:bg-background-dark">
-        <div className="container text-center bg-blue-950/50 dark:bg-blue-950 p-8 rounded-lg">
+      <section className="py-12 bg-background dark:bg-background-dark">
+        <div className="container text-center bg-gradient-to-r from-amber-200 via-amber-100 to-amber-50 dark:bg-blue-950 p-8 rounded-lg">
           <h2 className="text-3xl font-bold mb-4">Join Our Journey</h2>
           <p className="text-xl mb-8 text-text-secondary dark:text-text-dark-secondary">
             Be part of our growing community of satisfied customers.

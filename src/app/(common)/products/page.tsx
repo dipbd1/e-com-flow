@@ -25,21 +25,23 @@ async function getProducts() {
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+  const { category, sort, minPrice, maxPrice, page } = searchParams;
+  
   const products = await getProducts();
   
   // Apply filters based on searchParams
   let filteredProducts = [...products];
   
   // Filter by category
-  if (searchParams.category) {
+  if (category) {
     filteredProducts = filteredProducts.filter(
-      product => product.categoryId === searchParams.category
+      product => product.categoryId === category
     );
   }
 
   // Sort products
-  if (searchParams.sort) {
-    switch (searchParams.sort) {
+  if (sort) {
+    switch (sort) {
       case 'price-low':
         filteredProducts.sort((a, b) => (a.salePrice || a.price) - (b.salePrice || b.price));
         break;
@@ -56,25 +58,24 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   }
 
   // Filter by price range
-  if (searchParams.minPrice) {
-    const minPrice = parseFloat(searchParams.minPrice);
+  if (minPrice) {
+    const min = parseFloat(minPrice);
     filteredProducts = filteredProducts.filter(
-      product => (product.salePrice || product.price) >= minPrice
+      product => (product.salePrice || product.price) >= min
     );
   }
-  if (searchParams.maxPrice) {
-    const maxPrice = parseFloat(searchParams.maxPrice);
+  if (maxPrice) {
+    const max = parseFloat(maxPrice);
     filteredProducts = filteredProducts.filter(
-      product => (product.salePrice || product.price) <= maxPrice
+      product => (product.salePrice || product.price) <= max
     );
   }
 
   // Pagination
-  const page = parseInt(searchParams.page || '1');
-  const itemsPerPage = 12;
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-  const startIndex = (page - 1) * itemsPerPage;
-  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
+  const currentPage = parseInt(page || '1');
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -89,10 +90,10 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         <div className="w-full md:w-1/4">
           <ProductFilters
             totalProducts={filteredProducts.length}
-            currentCategory={searchParams.category}
+            currentCategory={category}
             priceRange={{
-              min: searchParams.minPrice || '',
-              max: searchParams.maxPrice || '',
+              min: minPrice || '',
+              max: maxPrice || '',
             }}
           />
         </div>
@@ -100,12 +101,12 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         <div className="w-full md:w-3/4">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold">All Products</h1>
-            <SortSelect currentSort={searchParams.sort || 'newest'} />
+            <SortSelect currentSort={sort || 'newest'} />
           </div>
           
           <ProductGrid
             products={paginatedProducts}
-            currentPage={page}
+            currentPage={currentPage}
             totalPages={totalPages}
           />
         </div>

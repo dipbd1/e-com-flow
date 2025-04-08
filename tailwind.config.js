@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -19,7 +19,6 @@ module.exports = {
           DEFAULT: '#10B981',
           dark: '#059669',
         },
-        pinkish: "#e32e80",
         accent: {
           DEFAULT: '#F59E0B',
           dark: '#D97706',
@@ -35,10 +34,11 @@ module.exports = {
         text: {
           primary: '#1F2937',
           secondary: '#4B5563',
-          tertiary: '#e32e80',
+          hover: '#133337',
           dark: {
             primary: '#F9FAFB',
             secondary: '#D1D5DB',
+            hover: '#40e0d0',
           },
         },
       },
@@ -46,3 +46,5 @@ module.exports = {
   },
   plugins: [],
 };
+
+export default config;
