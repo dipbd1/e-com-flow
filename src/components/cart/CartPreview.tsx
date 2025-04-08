@@ -129,11 +129,12 @@ export function CartPreview({ isOpen, onClose }: CartPreviewProps) {
                     <Button className="w-full">Checkout</Button>
                   </Link>
                 </div>
-                <div className="mt-6 flex justify-center text-center text-sm text-muted-foreground">
+                <div
+                onClick={onClose}
+                className="mt-6 flex justify-center text-center text-sm text-muted-foreground cursor-pointer">
                   <p>
                     or{' '}
                     <Link
-                    onClick={onClose}
                      href="/cart" className="font-medium text-primary hover:text-primary/90">
                       View Cart
                     </Link>
