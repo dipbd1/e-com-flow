@@ -7,31 +7,36 @@ import NewArrivals from '@/components/home/NewArrivals';
 import OnSale from '@/components/home/OnSale';
 
 async function getFeaturedData() {
-  const res = await fetch('http://localhost:3000/api/featured', { cache: 'no-store' });
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${baseUrl}/api/featured`, { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to fetch featured data');
   return res.json();
 }
 
 async function getCategories() {
-  const res = await fetch('http://localhost:3000/api/categories', { cache: 'no-store' });
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${baseUrl}/api/categories`, { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to fetch categories');
   return res.json();
 }
 
 async function getFeaturedProducts() {
-  const res = await fetch('http://localhost:3000/api/products?featured=true', { cache: 'no-store' });
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${baseUrl}/api/products?featured=true`, { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to fetch featured products');
   return res.json();
 }
 
 async function getNewArrivals() {
-  const res = await fetch('http://localhost:3000/api/products?new=true', { cache: 'no-store' });
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${baseUrl}/api/products?new=true`, { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to fetch new arrivals');
   return res.json();
 }
 
 async function getOnSaleProducts() {
-  const res = await fetch('http://localhost:3000/api/products?sale=true', { cache: 'no-store' });
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${baseUrl}/api/products?sale=true`, { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to fetch on sale products');
   return res.json();
 }
