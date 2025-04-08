@@ -41,7 +41,7 @@ function DealsContent() {
   const paginatedDeals = sortedDeals.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="space-y-8">
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },
@@ -49,12 +49,15 @@ function DealsContent() {
         ]}
       />
       
-      <h1 className="text-3xl font-bold mb-6">Hot Deals</h1>
-      <p className="text-gray-600 mb-8">Check out our best deals and discounts!</p>
+      <div className="space-y-4">
+        <h1 className="text-3xl font-bold">Hot Deals</h1>
+        <p className="text-gray-600">Check out our best deals and discounts!</p>
+      </div>
 
-      <div className="flex justify-end mb-6">
+      <div className="flex justify-end">
         <DealsSortSelect />
       </div>
+
       <ProductGrid
         products={paginatedDeals}
         currentPage={page}

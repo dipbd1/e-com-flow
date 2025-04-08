@@ -88,7 +88,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto">
       <Breadcrumb items={breadcrumbItems} />
       
       <div className="flex flex-col md:flex-row gap-8">
