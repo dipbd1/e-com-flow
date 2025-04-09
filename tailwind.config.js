@@ -23,6 +23,9 @@ const config = {
           DEFAULT: '#F59E0B',
           dark: '#D97706',
         },
+        cardBg:{
+          DEFAULT: '$FFEDFA',
+        },
         background: {
           light: '#F9FAFB',
           dark: '#1F2937',
