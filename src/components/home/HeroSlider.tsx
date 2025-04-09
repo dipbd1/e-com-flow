@@ -49,7 +49,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
       </div>
 
       {/* Client-side slider positioned in the same column as the server-rendered slide */}
-      <div className="col-span-full md:col-span-8 md:col-start-1 md:row-start-1 z-20">
+      <div className="col-span-full md:col-span-8 md:col-start-1 md:row-start-1 z-20 rounded-lg">
         <ClientSideSlider slides={slides} />
       </div>
 
