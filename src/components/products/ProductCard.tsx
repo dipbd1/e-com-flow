@@ -16,7 +16,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div 
-      className="group relative bg-cardBg dark:bg-surface-dark rounded-xl p-4 transition-all duration-300 hover:shadow-lg dark:hover:shadow-gray-800/50"
+      className="group relative bg-cardBg dark:bg-surface-dark rounded-xl p-4 transition-all duration-300 hover:shadow-lg dark:hover:shadow-gray-800/50 h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -79,7 +79,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </h3>
           
-          <div className="flex flex-row justify-between flex-wrap gap-2">
+          <div className="flex flex-col gap-2">
             {/* Price */}
             <div className="flex items-center gap-2">
               {product.salePrice ? (
